@@ -11,7 +11,7 @@ function App() {
   return (
     <AuthProvider>
       <WorkoutProvider>
-        <BrowserRouter>
+        <BrowserRouter basename='/Rutineitor'>
           <Routes>
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/login" element={<LoginPage />} />
