@@ -1,0 +1,554 @@
+{
+  "exercises": [
+    {
+      "label": "Adv Toes to Bar",
+      "isometric": false,
+      "weighted": false
+    },
+    {
+      "label": "Autralianas",
+      "isometric": false,
+      "weighted": true
+    },
+    {
+      "label": "Back Lever",
+      "isometric": true,
+      "weighted": false
+    },
+    {
+      "label": "Banco Plano",
+      "isometric": false,
+      "weighted": true
+    },
+    {
+      "label": "Bandera",
+      "isometric": true,
+      "weighted": false
+    },
+    {
+      "label": "Bandera Candlestick",
+      "isometric": true,
+      "weighted": false
+    },
+    {
+      "label": "Bandera Elevaciones",
+      "isometric": false,
+      "weighted": false
+    },
+    {
+      "label": "Bandera Straddle",
+      "isometric": true,
+      "weighted": false
+    },
+    {
+      "label": "Bandera Straddle a Full",
+      "isometric": false,
+      "weighted": false
+    },
+    {
+      "label": "Bandera Tuck",
+      "isometric": true,
+      "weighted": false
+    },
+    {
+      "label": "Bent Planche",
+      "isometric": true,
+      "weighted": false
+    },
+    {
+      "label": "Biceps Anillas",
+      "isometric": false,
+      "weighted": false
+    },
+    {
+      "label": "Caminata en Vertical",
+      "isometric": false,
+      "weighted": false
+    },
+    {
+      "label": "Cristo",
+      "isometric": true,
+      "weighted": false
+    },
+    {
+      "label": "Cristo Banda",
+      "isometric": true,
+      "weighted": false
+    },
+    {
+      "label": "Cristo Elevaciones Banda",
+      "isometric": false,
+      "weighted": false
+    },
+    {
+      "label": "Cristo Elevaciones Codo",
+      "isometric": false,
+      "weighted": false
+    },
+    {
+      "label": "Dominadas",
+      "isometric": false,
+      "weighted": true
+    },
+    {
+      "label": "Dominadas 1 brazo",
+      "isometric": false,
+      "weighted": false
+    },
+    {
+      "label": "Dominadas Abiertas",
+      "isometric": false,
+      "weighted": true
+    },
+    {
+      "label": "Dominadas Arquero",
+      "isometric": false,
+      "weighted": false
+    },
+    {
+      "label": "Dominadas Cerradas",
+      "isometric": false,
+      "weighted": true
+    },
+    {
+      "label": "Dominadas Comando",
+      "isometric": false,
+      "weighted": true
+    },
+    {
+      "label": "Dominadas Explosivas",
+      "isometric": false,
+      "weighted": false
+    },
+    {
+      "label": "Dominadas Supinas",
+      "isometric": false,
+      "weighted": true
+    },
+    {
+      "label": "Dragon Flag",
+      "isometric": false,
+      "weighted": false
+    },
+    {
+      "label": "Elevación de Cadera",
+      "isometric": false,
+      "weighted": true
+    },
+    {
+      "label": "Espinales",
+      "isometric": false,
+      "weighted": true
+    },
+    {
+      "label": "Espinales Superman",
+      "isometric": true,
+      "weighted": true
+    },
+    {
+      "label": "Estático Anillas",
+      "isometric": true,
+      "weighted": false
+    },
+    {
+      "label": "Estocadas",
+      "isometric": false,
+      "weighted": true
+    },
+    {
+      "label": "Estocadas con Salto",
+      "isometric": false,
+      "weighted": false
+    },
+    {
+      "label": "Face Pulls",
+      "isometric": false,
+      "weighted": false
+    },
+    {
+      "label": "Flexión 1 brazo",
+      "isometric": false,
+      "weighted": false
+    },
+    {
+      "label": "Flexión de Triceps",
+      "isometric": false,
+      "weighted": false
+    },
+    {
+      "label": "Flexiones",
+      "isometric": false,
+      "weighted": true
+    },
+    {
+      "label": "Flexiones Arquero",
+      "isometric": false,
+      "weighted": false
+    },
+    {
+      "label": "Flexiones Declinadas",
+      "isometric": false,
+      "weighted": false
+    },
+    {
+      "label": "Flexiones Diamante",
+      "isometric": false,
+      "weighted": false
+    },
+    {
+      "label": "Flexiones Inclinadas",
+      "isometric": false,
+      "weighted": false
+    },
+    {
+      "label": "Flexiones Planche",
+      "isometric": false,
+      "weighted": false
+    },
+    {
+      "label": "Flexiones Pyke",
+      "isometric": false,
+      "weighted": false
+    },
+    {
+      "label": "Flexiones TigerBend",
+      "isometric": false,
+      "weighted": false
+    },
+    {
+      "label": "Flexiones verticales",
+      "isometric": false,
+      "weighted": true
+    },
+    {
+      "label": "Fondos",
+      "isometric": false,
+      "weighted": true
+    },
+    {
+      "label": "Fondos Anillas",
+      "isometric": false,
+      "weighted": true
+    },
+    {
+      "label": "Fondos Arquero",
+      "isometric": false,
+      "weighted": false
+    },
+    {
+      "label": "Fondos Barra Horizontal",
+      "isometric": false,
+      "weighted": true
+    },
+    {
+      "label": "Fondos Barras Paralelas",
+      "isometric": false,
+      "weighted": true
+    },
+    {
+      "label": "Fondos Búlgaros",
+      "isometric": false,
+      "weighted": true
+    },
+    {
+      "label": "Fondos Explosivos",
+      "isometric": false,
+      "weighted": false
+    },
+    {
+      "label": "Fondos Hefesto",
+      "isometric": false,
+      "weighted": false
+    },
+    {
+      "label": "Frog a Vertical",
+      "isometric": false,
+      "weighted": false
+    },
+    {
+      "label": "Front Lever",
+      "isometric": true,
+      "weighted": false
+    },
+    {
+      "label": "Front Lever Adv Tuck",
+      "isometric": true,
+      "weighted": false
+    },
+    {
+      "label": "Front Lever Elevaciones",
+      "isometric": false,
+      "weighted": false
+    },
+    {
+      "label": "Front Lever Negativas",
+      "isometric": false,
+      "weighted": false
+    },
+    {
+      "label": "Front Lever Straddle",
+      "isometric": true,
+      "weighted": false
+    },
+    {
+      "label": "Front Lever Tuck",
+      "isometric": true,
+      "weighted": false
+    },
+    {
+      "label": "Front Lever Una Pierna",
+      "isometric": true,
+      "weighted": false
+    },
+    {
+      "label": "Gemelos",
+      "isometric": false,
+      "weighted": true
+    },
+    {
+      "label": "Hangboard",
+      "isometric": true,
+      "weighted": true
+    },
+    {
+      "label": "Hefesto Biceps",
+      "isometric": false,
+      "weighted": false
+    },
+    {
+      "label": "Hollow Body Position",
+      "isometric": true,
+      "weighted": true
+    },
+    {
+      "label": "Horsestand",
+      "isometric": true,
+      "weighted": false
+    },
+    {
+      "label": "L-sit",
+      "isometric": true,
+      "weighted": false
+    },
+    {
+      "label": "Limpiaparabrisas",
+      "isometric": false,
+      "weighted": false
+    },
+    {
+      "label": "Muscle ups Anillas",
+      "isometric": false,
+      "weighted": true
+    },
+    {
+      "label": "Muscle ups Barra",
+      "isometric": false,
+      "weighted": true
+    },
+    {
+      "label": "Pegboard",
+      "isometric": false,
+      "weighted": false
+    },
+    {
+      "label": "Peso Muerto",
+      "isometric": false,
+      "weighted": true
+    },
+    {
+      "label": "Pistols",
+      "isometric": false,
+      "weighted": true
+    },
+    {
+      "label": "Plancha Alta",
+      "isometric": true,
+      "weighted": false
+    },
+    {
+      "label": "Plancha Baja",
+      "isometric": true,
+      "weighted": false
+    },
+    {
+      "label": "Plancha Elevaciones Laterales",
+      "isometric": false,
+      "weighted": true
+    },
+    {
+      "label": "Plancha Lateral",
+      "isometric": true,
+      "weighted": false
+    },
+    {
+      "label": "Plancha Superman",
+      "isometric": true,
+      "weighted": false
+    },
+    {
+      "label": "Planche Lean",
+      "isometric": true,
+      "weighted": false
+    },
+    {
+      "label": "Press a Vertical",
+      "isometric": false,
+      "weighted": false
+    },
+    {
+      "label": "Press Militar",
+      "isometric": false,
+      "weighted": true
+    },
+    {
+      "label": "Protracciones escapulares",
+      "isometric": false,
+      "weighted": false
+    },
+    {
+      "label": "Remo Invertido",
+      "isometric": false,
+      "weighted": false
+    },
+    {
+      "label": "Retracciones escapulares",
+      "isometric": false,
+      "weighted": false
+    },
+    {
+      "label": "Rotaciones Externas Banda",
+      "isometric": false,
+      "weighted": false
+    },
+    {
+      "label": "Rotaciones Internas Banda",
+      "isometric": false,
+      "weighted": false
+    },
+    {
+      "label": "Rueda Abdominal",
+      "isometric": false,
+      "weighted": false
+    },
+    {
+      "label": "Saltos al Cajón",
+      "isometric": false,
+      "weighted": false
+    },
+    {
+      "label": "Saltos Altos",
+      "isometric": false,
+      "weighted": false
+    },
+    {
+      "label": "Saltos Largos",
+      "isometric": false,
+      "weighted": false
+    },
+    {
+      "label": "Sentadillas",
+      "isometric": false,
+      "weighted": true
+    },
+    {
+      "label": "Sentadillas Arquero",
+      "isometric": false,
+      "weighted": true
+    },
+    {
+      "label": "Sentadillas Búlgaras",
+      "isometric": false,
+      "weighted": true
+    },
+    {
+      "label": "Sentadillas con Salto",
+      "isometric": false,
+      "weighted": false
+    },
+    {
+      "label": "Sentadillas Frontales",
+      "isometric": false,
+      "weighted": true
+    },
+    {
+      "label": "Sentadillas Shrimps",
+      "isometric": false,
+      "weighted": false
+    },
+    {
+      "label": "Sentadillas Sissy",
+      "isometric": false,
+      "weighted": false
+    },
+    {
+      "label": "Skin the Cat",
+      "isometric": false,
+      "weighted": false
+    },
+    {
+      "label": "Toes to Bar",
+      "isometric": false,
+      "weighted": true
+    },
+    {
+      "label": "Toes to Sky",
+      "isometric": false,
+      "weighted": false
+    },
+    {
+      "label": "Trepar Soga",
+      "isometric": false,
+      "weighted": true
+    },
+    {
+      "label": "Tuck Planche",
+      "isometric": true,
+      "weighted": false
+    },
+    {
+      "label": "Typewritter",
+      "isometric": false,
+      "weighted": false
+    },
+    {
+      "label": "V-sit",
+      "isometric": true,
+      "weighted": false
+    },
+    {
+      "label": "V-sit ups",
+      "isometric": false,
+      "weighted": true
+    },
+    {
+      "label": "Vertical",
+      "isometric": true,
+      "weighted": false
+    },
+    {
+      "label": "Verticales lado a lado",
+      "isometric": false,
+      "weighted": false
+    },
+    {
+      "label": "Vuelo Frontal",
+      "isometric": false,
+      "weighted": true
+    },
+    {
+      "label": "Vuelo Frontal Banda",
+      "isometric": false,
+      "weighted": false
+    },
+    {
+      "label": "Vuelo Lateral",
+      "isometric": false,
+      "weighted": true
+    },
+    {
+      "label": "Vuelo Lateral Banda",
+      "isometric": false,
+      "weighted": false
+    }
+  ]
+}
