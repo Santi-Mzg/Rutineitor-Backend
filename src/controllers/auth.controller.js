@@ -28,7 +28,14 @@ export const register = async (req, res) => {
         const userSaved = await newUser.save();
         const token = await createAccessToken({ id: userSaved._id });
 
-        res.cookie("token", token, { sameSite: "None", secure: true, httpOnly: true, expires: 7});
+        res.cookie("token", token, { 
+            // sameSite: "None", 
+            // secure: true, 
+            withCredentials: true,
+            httpOnly: false, 
+            // expires: 7});
+        })
+
         res.json({
             id: userSaved._id,
             username: userSaved.username,
@@ -54,7 +61,12 @@ export const login = async (req, res) => {
 
         const token = await createAccessToken({ id: userFound._id });
          
-        res.cookie("token", token);
+        // res.cookie("token", token);
+        res.cookie("token", token, {
+          withCredentials: true,
+          httpOnly: false,
+        });
+        
         res.json({
             id: userFound._id,
             username: userFound.username,
@@ -74,7 +86,7 @@ export const logout = (req, res) => {
 };
 
 export const verifyToken = async (req, res) => {
-    const { token } = req.cookies
+    const token = req.cookies.token
 
     if (!token) return res.status(401).json({ message: "No autorizado" })
 
