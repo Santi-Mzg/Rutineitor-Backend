@@ -12,14 +12,14 @@ export const getWorkout = async (req, res) => {
 }
 
 export const createOrUpdateWorkout = async (req, res) => {
-    const { date, blockList } = req.body;
+    const { date, type, blockList, comments } = req.body;
 
     try {
         const dateObj = new Date(date) // Convierte la cadena de fecha a un objeto Date
 
         const workoutFound = await Workout.findOneAndUpdate(
             { date: dateObj, user: req.user.id },
-            { user: req.user.id, date: dateObj, blockList },
+            { user: req.user.id, date: dateObj, type, blockList, comments },
             { upsert: true, new: true }
          )
 

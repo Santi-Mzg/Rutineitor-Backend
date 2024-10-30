@@ -46,7 +46,13 @@ export const createWorkoutSchema = z.object({
         .string({
             required_error: 'Fecha requerida'
         }),
+    type: z
+    .string({
+        required_error: 'Tipo requerido'
+    }),
     blockList: z
         .array(blockSchema)
-        .default([])
+        .default([]),
+    comments: z
+    .string().default('')
 })

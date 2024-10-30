@@ -53,7 +53,18 @@ const workoutSchema = new mongoose.Schema({
         required: true,
         trim: true
     },
-    blockList: [blockSchema]
+    type: {
+        type: String,
+        default: '',
+        required: true,
+        trim: true
+    },
+    blockList: [blockSchema],
+    comments: {
+        type: String,
+        default: '',
+        trim: true
+    }
 }, {
     timestamps: true
 });
