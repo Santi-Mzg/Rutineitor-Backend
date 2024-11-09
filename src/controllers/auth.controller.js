@@ -61,10 +61,10 @@ export const login = async (req, res) => {
 
         const token = await createAccessToken({ id: userFound._id });
          
-        // res.cookie("token", token);
         res.cookie("token", token, {
           withCredentials: true,
-          httpOnly: false,
+          httpOnly: true,
+          sameSite: "Strict", // Ayuda a prevenir CSRF
         });
         
         res.json({

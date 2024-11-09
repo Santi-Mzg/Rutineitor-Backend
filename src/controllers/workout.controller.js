@@ -43,4 +43,16 @@ export const deleteWorkout = async (req, res) => {
     }
 }
 
+// Ruta para obtener rutinas por tipo
+export const fetchWorkoutByType = async (req, res) => {
+    const { type } = req.body;
+    try {
+      const workouts = await Workout.find({ user: req.user.id, type: type })
+      console.log(workouts)
+      res.json(workouts);
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  }
+
 
