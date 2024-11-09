@@ -6,11 +6,18 @@ import authRoutes from './routes/auth.routes.js';
 import workoutRoutes from './routes/workout.routes.js';
 
 const app = express();
+const allowedOrigins = ["http://localhost:5173", "https://santi-mzg.github.io"];
+
 
 app.use(
     cors({
-        // origin: "http://localhost:5173",
-        origin: "https://santi-mzg.github.io",
+        origin: (origin, callback) => {
+            if (!origin || allowedOrigins.includes(origin)) {
+                callback(null, true); // Permitir el origen
+            } else {
+                callback(new Error("No autorizado por CORS")); // Rechazar otros orígenes
+            }
+        },
         methods: ["GET", "POST", "PUT", "DELETE"],
         credentials: true
 })
