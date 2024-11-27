@@ -64,6 +64,7 @@ export const login = async (req, res) => {
         res.cookie("token", token, {
           withCredentials: true,
           httpOnly: true,
+          secure: true,
           sameSite: "Strict", // Ayuda a prevenir CSRF
         });
         
@@ -81,8 +82,8 @@ export const login = async (req, res) => {
 };
 
 export const logout = (req, res) => {
-    res.cookie('token', "", { expires: new Date(0) });
-    return res.sendStatus(200)
+    res.clearCookie('token', { httpOnly: true, sameSite: "Strict" });
+    return res.sendStatus(200);
 };
 
 export const verifyToken = async (req, res) => {

@@ -4,10 +4,10 @@ import dotenv from 'dotenv'
 dotenv.config()
 const token_secret = process.env.TOKEN_SECRET
 
-export function createAccessToken(id) {
+export function createAccessToken(payload) {
     return new Promise((resolve, reject) => {
         jwt.sign(
-            id,
+            payload,
             token_secret,
             {
                 expiresIn: "1d",
