@@ -64,8 +64,8 @@ export const login = async (req, res) => {
         res.cookie("token", token, {
           withCredentials: true,
           httpOnly: true,
-          secure: true,
-          sameSite: "Strict", // Ayuda a prevenir CSRF
+          secure: true, // Solo se envía por HTTPS
+          sameSite: "None",
         });
         
         res.json({
