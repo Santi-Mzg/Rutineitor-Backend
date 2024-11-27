@@ -11,7 +11,13 @@ const allowedOrigins = ["http://localhost:5173", "https://santi-mzg.github.io"];
 
 app.use(
     cors({
-        origin: "*",
+        origin: (origin, callback) => {
+            if (!origin || allowedOrigins.includes(origin)) {
+                callback(null, true); // Permitir el origen
+            } else {
+                callback(new Error("No autorizado por CORS")); // Rechazar otros orígenes
+            }
+        },
         methods: ["GET", "POST", "PUT", "DELETE"],
         credentials: true
 })
