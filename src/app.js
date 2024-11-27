@@ -22,7 +22,7 @@ app.use(
         credentials: true
 })
 );
-
+app.options("*", cors()); // Manejar preflight para cualquier ruta
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(cookieParser());
