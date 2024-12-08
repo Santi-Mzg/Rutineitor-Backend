@@ -1,4 +1,3 @@
-import mongoose from 'mongoose';
 import { z } from 'zod'
 
 const exerciseSchema = z.object({
@@ -17,12 +16,12 @@ const exerciseSchema = z.object({
         })
         .default(z.coerce.boolean().parse(0)),
     volume: z
-        .any({
+        .string({
             required_error: 'Volumen necesario'
         })
         .default(10),
     weight: z
-        .any({
+        .string({
             required_error: 'Peso necesario'
         })
         .nullable()

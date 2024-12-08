@@ -11,6 +11,32 @@ export const getWorkout = async (req, res) => {
     }
 }
 
+export const getMonthWorkouts = async (req, res) => {
+    try {
+        const currentDate = new Date();
+        const firstDay = new Date(currentDate.getFullYear(), currentDate.getMonth() - 1, 22);
+        const lastDay = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 6);
+        
+        // Formatear fechas para la consulta
+        const firstDayFormatted = firstDay.toISOString().split('T')[0];
+        const lastDayFormatted = lastDay.toISOString().split('T')[0];
+
+        // Realizar la consulta con el rango de fechas
+        const workouts = await Workout.find({
+            date: { $gte: firstDayFormatted, $lte: lastDayFormatted },
+            user: req.user.id,
+        });
+
+        if (!workouts || workouts.length === 0) {
+            return res.status(404).json({ message: "No se encontraron rutinas" });
+        }
+
+        res.json(workouts);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+}
+
 export const createOrUpdateWorkout = async (req, res) => {
     const { date, type, blockList, comments } = req.body;
 
