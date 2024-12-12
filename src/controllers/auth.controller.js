@@ -50,10 +50,10 @@ export const register = async (req, res) => {
 };
 
 export const login = async (req, res) => {
-    const { username, password } = req.body;
+    const { email, password } = req.body;
 
     try {
-        const userFound = await User.findOne({ username });
+        const userFound = await User.findOne({ email });
         if (!userFound) return res.status(400).json({ message: "Usuario no encontrado" });
 
         const isMatch = await bcrypt.compare(password, userFound.password);
@@ -85,6 +85,39 @@ export const logout = (req, res) => {
     res.clearCookie('token', { httpOnly: true, sameSite: "Strict" });
     return res.sendStatus(200);
 };
+
+export const modify = async (req, res) => {
+    const { username, age, weight, height, goal } = req.body;
+
+    try {
+        const userFound = await User.findOne({ username })
+        if (!userFound) return res.status(400).json({ message: "Usuario no se encuentra registrado" })
+
+        userFound.username = username;
+        userFound.age = age;
+        userFound.weight = weight;
+        userFound.height = height;
+        userFound.goal = goal;
+
+        const userSaved = await userFound.save();
+
+        res.json({
+            id: userSaved._id,
+            username: userSaved.username,
+            email: userSaved.email,
+            age: userSaved.age,
+            weight: userSaved.weight,
+            height: userSaved.height,
+            goal: userSaved.goal,
+            createdAt: userSaved.createdAt,
+            upsdatedAt: userSaved.updatedAt,
+        });
+
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
+
 
 export const verifyToken = async (req, res) => {
     const token = req.cookies.token

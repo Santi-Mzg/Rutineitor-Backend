@@ -13,6 +13,21 @@ const userSchema = new mongoose.Schema({
         trim: true,
         unique: true,
     },
+    age: {
+        type: String,
+        trim: true,
+    },
+    weight: {
+        type: String,
+        trim: true,
+    },
+    height: {
+        type: String,
+        trim: true,
+    },
+    goal: {
+        type: String,
+    },
     password: {
         type: String,
         required: true,

@@ -11,10 +11,13 @@ export const getWorkout = async (req, res) => {
     }
 }
 
-export const getMonthWorkouts = async (req, res) => {
+export const getCalendarWorkouts = async (req, res) => {
     try {
+        const { date } = req.params
         const currentDate = new Date();
-        const firstDay = new Date(currentDate.getFullYear(), currentDate.getMonth() - 1, 22);
+        const dateClass = new Date(date) 
+        
+        const firstDay = new Date(currentDate.getFullYear(), dateClass.getMonth() - 1, 22);
         const lastDay = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 6);
         
         // Formatear fechas para la consulta
@@ -70,15 +73,38 @@ export const deleteWorkout = async (req, res) => {
 }
 
 // Ruta para obtener rutinas por tipo
-export const fetchWorkoutByType = async (req, res) => {
-    const { type } = req.body;
+export const fetchWorkoutsByType = async (req, res) => {
+    const { type } = req.params;
+
     try {
       const workouts = await Workout.find({ user: req.user.id, type: type })
+
+      if (!workouts || workouts.length === 0) {
+        return res.status(404).json({ message: "No se encontraron rutinas" });
+    }
+
       console.log(workouts)
       res.json(workouts);
     } catch (error) {
       res.status(500).json({ message: error.message });
     }
   }
+
+export const fetchWorkoutsByExercise = async (req, res) => {
+    const { exercise } = req.params;
+    console.log(exercise)
+    try {
+        const workouts = await Workout.find({ user: req.user.id, 'blockList.exerciseList.label': exercise })
+
+        if (!workouts || workouts.length === 0) {
+        return res.status(404).json({ message: "No se encontraron rutinas" });
+    }
+
+        console.log(workouts)
+        res.json(workouts);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+}
 
 
