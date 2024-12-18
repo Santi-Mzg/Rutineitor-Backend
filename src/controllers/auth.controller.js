@@ -72,6 +72,10 @@ export const login = async (req, res) => {
             id: userFound._id,
             username: userFound.username,
             email: userFound.email,
+            age: userFound.age,
+            weight: userFound.weight,
+            height: userFound.height,
+            goal: userFound.goal,
             createdAt: userFound.createdAt,
             upsdatedAt: userFound.updatedAt,
         });
