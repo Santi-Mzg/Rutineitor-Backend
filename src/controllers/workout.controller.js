@@ -17,12 +17,19 @@ export const getCalendarWorkouts = async (req, res) => {
         const currentDate = new Date();
         const dateClass = new Date(date) 
         
-        const firstDay = new Date(currentDate.getFullYear(), dateClass.getMonth() - 1, 22);
+        const firstDay = new Date(dateClass.getFullYear(), dateClass.getMonth(), 22);
         const lastDay = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 6);
         
         // Formatear fechas para la consulta
         const firstDayFormatted = firstDay.toISOString().split('T')[0];
         const lastDayFormatted = lastDay.toISOString().split('T')[0];
+        console.log("dateClass "+dateClass)
+
+        console.log("dateClassMonth "+dateClass.getMonth())
+
+        console.log("firstDayFormatted "+firstDayFormatted)
+        console.log("lastDayFormatted "+lastDayFormatted)
+        console.log("user "+JSON.stringify(req.user))
 
         // Realizar la consulta con el rango de fechas
         const workouts = await Workout.find({
