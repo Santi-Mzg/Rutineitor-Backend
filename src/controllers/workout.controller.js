@@ -1,8 +1,11 @@
 import Workout from '../models/workout.model.js'
 
 export const getWorkout = async (req, res) => {
+
     try {
-        const workoutFound = await Workout.findOne({ date: req.params.date, user: req.user.id });
+        const { date, id } = req.params
+
+        const workoutFound = await Workout.findOne({ date: date, user: id });
         if (!workoutFound) return res.status(404).json({ message: "Rutina no encontrada" });
 
         res.json(workoutFound);
@@ -13,7 +16,7 @@ export const getWorkout = async (req, res) => {
 
 export const getCalendarWorkouts = async (req, res) => {
     try {
-        const { date } = req.params
+        const { date, id } = req.params
         const currentDate = new Date();
         const dateClass = new Date(date) 
         
@@ -34,7 +37,7 @@ export const getCalendarWorkouts = async (req, res) => {
         // Realizar la consulta con el rango de fechas
         const workouts = await Workout.find({
             date: { $gte: firstDayFormatted, $lte: lastDayFormatted },
-            user: req.user.id,
+            user: id,
         });
 
         if (!workouts || workouts.length === 0) {
@@ -49,13 +52,15 @@ export const getCalendarWorkouts = async (req, res) => {
 
 export const createOrUpdateWorkout = async (req, res) => {
     const { date, type, blockList, comments } = req.body;
-
+    const { id } = req.params;
+    console.log("body "+req.body)
+    console.log("id "+id)
     try {
         const dateObj = new Date(date) // Convierte la cadena de fecha a un objeto Date
 
         const workoutFound = await Workout.findOneAndUpdate(
-            { date: dateObj, user: req.user.id },
-            { user: req.user.id, date: dateObj, type, blockList, comments },
+            { date: dateObj, user: id },
+            { user: id, date: dateObj, type, blockList, comments },
             { upsert: true, new: true }
          )
 
@@ -70,7 +75,9 @@ export const createOrUpdateWorkout = async (req, res) => {
 
 export const deleteWorkout = async (req, res) => {
     try {
-        const workoutFound = await Workout.findOneAndDelete({ date: req.params.date, user: req.user.id });
+        console.log("date "+req.params.date)
+        console.log("id "+req.params.id)
+        const workoutFound = await Workout.findOneAndDelete({ date: req.params.date, user: req.params.id });
         if (!workoutFound) return res.status(404).json({ message: "Rutina no encontrada" });
 
         res.sendStatus(204)

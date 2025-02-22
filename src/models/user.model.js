@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import { boolean } from 'zod';
 
 const userSchema = new mongoose.Schema({
     username: {
@@ -27,6 +28,12 @@ const userSchema = new mongoose.Schema({
     },
     goal: {
         type: String,
+    },
+    isTrainer: {
+        type: Boolean,
+        default: false,
+        required: true,
+        trim: true,
     },
     password: {
         type: String,

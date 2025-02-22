@@ -23,6 +23,7 @@ export const register = async (req, res) => {
             username,
             email,
             password: passwordHash,
+            isTrainer: false,
         });
 
         const userSaved = await newUser.save();
@@ -37,9 +38,10 @@ export const register = async (req, res) => {
         })
 
         res.json({
-            id: userSaved._id,
+            _id: userSaved._id,
             username: userSaved.username,
             email: userSaved.email,
+            isTrainer: userSaved.isTrainer,
             createdAt: userSaved.createdAt,
             upsdatedAt: userSaved.updatedAt,
         });
@@ -69,9 +71,10 @@ export const login = async (req, res) => {
         });
         
         res.json({
-            id: userFound._id,
+            _id: userFound._id,
             username: userFound.username,
             email: userFound.email,
+            isTrainer: userFound.isTrainer,
             age: userFound.age,
             weight: userFound.weight,
             height: userFound.height,
@@ -106,9 +109,10 @@ export const modify = async (req, res) => {
         const userSaved = await userFound.save();
 
         res.json({
-            id: userSaved._id,
+            _id: userSaved._id,
             username: userSaved.username,
             email: userSaved.email,
+            isTrainer: userSaved.isTrainer,
             age: userSaved.age,
             weight: userSaved.weight,
             height: userSaved.height,
