@@ -20,7 +20,7 @@ export const getCalendarWorkouts = async (req, res) => {
         const currentDate = new Date();
         const dateClass = new Date(date) 
         
-        const firstDay = new Date(dateClass.getFullYear(), dateClass.getMonth(), 22);
+        const firstDay = new Date(dateClass.getFullYear(), dateClass.getMonth() - 1, 22);
         const lastDay = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 6);
         
         // Formatear fechas para la consulta
