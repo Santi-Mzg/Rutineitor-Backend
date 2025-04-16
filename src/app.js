@@ -31,5 +31,8 @@ app.use(cookieParser());
 app.use("/api", authRoutes);
 app.use("/api", workoutRoutes);
 app.use("/api", userRoutes);
+app.get("/api/ping", (req, res) => {
+    res.status(200).send("pong");
+});
 
 export default app;
