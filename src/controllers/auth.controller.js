@@ -30,11 +30,10 @@ export const register = async (req, res) => {
         const token = await createAccessToken({ id: userSaved._id });
 
         res.cookie("token", token, { 
-            // sameSite: "None", 
-            // secure: true, 
-            withCredentials: true,
-            httpOnly: false, 
-            // expires: 7});
+            httpOnly: true, // No accesible desde JavaScript del lado del cliente
+            secure: true, // Solo se envía por HTTPS
+            sameSite: "None",
+            expires: new Date(Date.now() + 3600000) // 1 hora de expiración
         })
 
         res.json({
@@ -43,7 +42,7 @@ export const register = async (req, res) => {
             email: userSaved.email,
             isTrainer: userSaved.isTrainer,
             createdAt: userSaved.createdAt,
-            upsdatedAt: userSaved.updatedAt,
+            updatedAt: userSaved.updatedAt,
         });
 
     } catch (error) {
@@ -64,10 +63,10 @@ export const login = async (req, res) => {
         const token = await createAccessToken({ id: userFound._id });
          
         res.cookie("token", token, {
-          withCredentials: true,
-          httpOnly: true,
+          httpOnly: true, // No accesible desde JavaScript del lado del cliente
           secure: true, // Solo se envía por HTTPS
           sameSite: "None",
+          expires: new Date(Date.now() + 3600000) // 1 hora de expiración
         });
         
         res.json({
@@ -80,7 +79,7 @@ export const login = async (req, res) => {
             height: userFound.height,
             goal: userFound.goal,
             createdAt: userFound.createdAt,
-            upsdatedAt: userFound.updatedAt,
+            updatedAt: userFound.updatedAt,
         });
 
     } catch (error) {
@@ -89,7 +88,11 @@ export const login = async (req, res) => {
 };
 
 export const logout = (req, res) => {
-    res.clearCookie('token', { httpOnly: true, sameSite: "Strict" });
+    res.clearCookie('token', { 
+        httpOnly: true, 
+        secure: true,
+        sameSite: "None" 
+    });
     return res.sendStatus(200);
 };
 

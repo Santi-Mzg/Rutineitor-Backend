@@ -7,7 +7,7 @@ import workoutRoutes from './routes/workout.routes.js';
 import userRoutes from './routes/user.routes.js';
 
 const app = express();
-const allowedOrigins = ["http://localhost:5173", "https://santi-mzg.github.io"];
+const allowedOrigins = ["http://localhost:5173", "https://localhost:4173", "https://santi-mzg.github.io"];
 
 
 app.use(
@@ -32,7 +32,7 @@ app.use("/api", authRoutes);
 app.use("/api", workoutRoutes);
 app.use("/api", userRoutes);
 app.get("/api/ping", (req, res) => {
-    res.status(200).send("pong");
+    res.status(200).send("ping");
 });
 
 export default app;

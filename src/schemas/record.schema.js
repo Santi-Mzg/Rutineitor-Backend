@@ -1,7 +1,7 @@
 import { z } from 'zod'
-import { blockSchema } from './block.schema.js'
+import { exerciseSchema } from './exercise.schema'
 
-export const createWorkoutSchema = z.object({
+export const recordSchema = z.object({
     date: z
         .string({
             required_error: 'Fecha requerida'

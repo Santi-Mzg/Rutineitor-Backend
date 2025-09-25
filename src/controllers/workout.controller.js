@@ -121,4 +121,21 @@ export const fetchWorkoutsByExercise = async (req, res) => {
     }
 }
 
+// export const fetchRecords = async (req, res) => {
+//     console.log(exercise)
+//     try {
+//         const workouts = await Workout.find({ user: req.user.id, 'blockList.exerciseList.label': exercise })
+
+//         if (!workouts || workouts.length === 0) {
+//         return res.status(404).json({ message: "No se encontraron rutinas" });
+//     }
+
+//         console.log(workouts)
+//         res.json(workouts);
+//     } catch (error) {
+//         res.status(500).json({ message: error.message });
+//     }
+// }
+
+
 
