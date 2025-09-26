@@ -7,12 +7,12 @@ export const createWorkoutSchema = z.object({
             required_error: 'Fecha requerida'
         }),
     type: z
-    .string({
-        required_error: 'Tipo requerido'
-    }),
+        .string({
+            required_error: 'Tipo requerido'
+        }),
     blockList: z
         .array(blockSchema)
         .default([]),
     comments: z
-    .string().default('')
+        .string().default('')
 })

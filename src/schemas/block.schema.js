@@ -7,7 +7,7 @@ export const blockSchema = z.object({
             required_error: 'Número de series requerido'
         })
         .int()
-        .default(3),
+        .default(1),
     exerciseList: z
         .array(exerciseSchema)
         .default([])

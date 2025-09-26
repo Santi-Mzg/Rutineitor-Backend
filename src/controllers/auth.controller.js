@@ -37,7 +37,7 @@ export const register = async (req, res) => {
         })
 
         res.json({
-            _id: userSaved._id,
+            id: userSaved._id,
             username: userSaved.username,
             email: userSaved.email,
             isTrainer: userSaved.isTrainer,
@@ -70,7 +70,7 @@ export const login = async (req, res) => {
         });
         
         res.json({
-            _id: userFound._id,
+            id: userFound._id,
             username: userFound.username,
             email: userFound.email,
             isTrainer: userFound.isTrainer,
@@ -112,7 +112,7 @@ export const modify = async (req, res) => {
         const userSaved = await userFound.save();
 
         res.json({
-            _id: userSaved._id,
+            id: userSaved._id,
             username: userSaved.username,
             email: userSaved.email,
             isTrainer: userSaved.isTrainer,

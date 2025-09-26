@@ -53,8 +53,7 @@ export const getCalendarWorkouts = async (req, res) => {
 export const createOrUpdateWorkout = async (req, res) => {
     const { date, type, blockList, comments } = req.body;
     const { id } = req.params;
-    console.log("body "+req.body)
-    console.log("id "+id)
+
     try {
         const dateObj = new Date(date) // Convierte la cadena de fecha a un objeto Date
 
@@ -64,7 +63,6 @@ export const createOrUpdateWorkout = async (req, res) => {
             { upsert: true, new: true }
          )
 
-        console.log(req.user)
 
         res.json(workoutFound);
 

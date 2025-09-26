@@ -19,11 +19,10 @@ export const exerciseSchema = z.object({
         .string({
             required_error: 'Volumen necesario'
         })
-        .default(10),
+        .default("1"),
     weight: z
         .string({
             required_error: 'Peso necesario'
         })
-        .nullable()
-        .default(null),
+        .default("Libre"),
 })
