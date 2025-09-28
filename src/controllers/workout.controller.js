@@ -26,13 +26,6 @@ export const getCalendarWorkouts = async (req, res) => {
         // Formatear fechas para la consulta
         const firstDayFormatted = firstDay.toISOString().split('T')[0];
         const lastDayFormatted = lastDay.toISOString().split('T')[0];
-        console.log("dateClass "+dateClass)
-
-        console.log("dateClassMonth "+dateClass.getMonth())
-
-        console.log("firstDayFormatted "+firstDayFormatted)
-        console.log("lastDayFormatted "+lastDayFormatted)
-        console.log("user "+JSON.stringify(req.user))
 
         // Realizar la consulta con el rango de fechas
         const workouts = await Workout.find({
