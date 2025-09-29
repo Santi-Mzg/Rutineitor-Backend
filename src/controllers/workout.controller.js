@@ -1,5 +1,6 @@
 import Workout from '../models/workout.model.js'
 import Subscription from '../models/subscription.model.js';
+import webpush from 'web-push';
 
 export const getWorkout = async (req, res) => {
 
