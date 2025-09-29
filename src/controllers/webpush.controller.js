@@ -16,30 +16,17 @@ export const sendWebPush = async (req, res) => {
 		const subscriptionData = await Subscription.findOne({ endpoint: endpoint });
         if (!subscriptionData) return res.status(404).json({ message: "Subscription not found" });
 
-		subscription = {
-			endpoint: subscriptionData?.endpoint || '',  
-			expirationTime: subscriptionData?.expirationTime ? subscriptionData.expirationTime : null,
-			keys: {
-				p256dh: subscriptionData?.keys.p256dh || '',
-				auth: subscriptionData?.keys.auth || '',
-			},
-		};
+		subscription = subscriptionData.subscription;
 
-	} catch (err) {
-		return res.status(400).json({ message: 'No subscription found or invalid JSON' });
-	}
+		if (!subscription?.endpoint) {
+			return res.status(400).json({ message: 'Invalid subscription format' });
+		}
 
-	if (!subscription?.endpoint) {
-		return res.status(400).json({ message: 'Invalid subscription format' });
-	}
+		const pushPayload = JSON.stringify(pushBody);
 
-	const pushPayload = JSON.stringify(pushBody);
-
-	try {
 		const response = await webpush.sendNotification(subscription, pushPayload);
 
-		res.status(200).json({ message: 'Notification sent.' });
-		res.json(response);
+		res.status(200).json(response);
 		
 	} catch (error) {
 
@@ -57,16 +44,15 @@ export const subscribe = async (req, res) => {
 	try {
 		const subscriptionFound = await Subscription.findOne({ endpoint: subscription.endpoint });
 		if (!subscriptionFound) {
-			await Subscription.create({
-				endpoint: subscription.endpoint,
-				expirationTime: subscription.expirationTime ? subscription.expirationTime : null,
-				keys: subscription.keys,
+			const newSub = await Subscription.create({
+				subscription,
 				user: userId
-			})
+			});
+
+			return res.status(201).json(newSub);
       	}
 
-		res.status(200).json({ message: 'Subscription created.' });
-    	res.json(subscriptionFound);
+		res.status(200).json(subscriptionFound);
 
 	} catch (error) {
 		res.status(500).json({ message: error.message });
