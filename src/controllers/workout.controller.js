@@ -1,4 +1,5 @@
 import Workout from '../models/workout.model.js'
+import Subscription from '../models/subscription.model.js';
 
 export const getWorkout = async (req, res) => {
 
@@ -55,7 +56,24 @@ export const createOrUpdateWorkout = async (req, res) => {
             { user: id, date: dateObj, type, blockList, comments },
             { upsert: true, new: true }
          )
-
+        
+        if(workoutFound) {
+            const subscription = await Subscription.findOne({ user: id });
+            if (subscription) {
+                const payload = JSON.stringify({
+                title: 'Se ha agregado un entrenamiento! 💪',
+                body: `Entrenamiento de: ${workoutFound.type} el día ${workoutFound.date}`,
+                icon: '/pwa-192x192.png',
+            });
+        
+            try {
+                await webpush.sendNotification(subscription, payload);
+                console.log(`Notificación enviada a ${id}`);
+            } catch (err) {
+                console.error('Error enviando notificación:', err);
+            }
+            }
+        }
 
         res.json(workoutFound);
 
