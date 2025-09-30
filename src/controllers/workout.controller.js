@@ -55,7 +55,7 @@ export const createOrUpdateWorkout = async (req, res) => {
         const workoutFound = await Workout.findOneAndUpdate(
             { date: dateObj, user: id },
             { user: id, date: dateObj, type, blockList, comments },
-            { upsert: true, new: true }
+            { upsert: true, new: true, setDefaultsOnInsert: true }
          )
         
         if(workoutFound) {

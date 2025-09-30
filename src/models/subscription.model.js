@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 const subscriptionSchema = new mongoose.Schema({
   subscription: {
-    endpoint: { type: String, required: true },
+    endpoint: { type: String, required: true, unique: true},
     expirationTime: { type: Number, default: null },
     keys: {
       p256dh: { type: String, required: true },
@@ -16,5 +16,6 @@ const subscriptionSchema = new mongoose.Schema({
   },
 }, { timestamps: true });
 
+subscriptionSchema.index({ "subscription.endpoint": 1 }, { unique: true, sparse: true });
 
 export default mongoose.model('Subscription', subscriptionSchema);

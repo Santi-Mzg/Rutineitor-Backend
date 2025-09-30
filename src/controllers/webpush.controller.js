@@ -14,7 +14,8 @@ export const sendWebPush = async (req, res) => {
 
 	try {
 		const subscriptionData = await Subscription.findOne({ "subscription.endpoint": endpoint });
-        if (!subscriptionData) return res.status(404).json({ message: "Subscription not found" });
+		console.log("subscriptionDataaaaaaaaaaaa:", subscriptionData.subscription);
+		if (!subscriptionData) return res.status(404).json({ message: "Subscription not found" });
 
 		subscription = subscriptionData.subscription;
 		if (!subscription?.endpoint) {
@@ -22,7 +23,6 @@ export const sendWebPush = async (req, res) => {
 		}
 
 		const pushPayload = JSON.stringify(pushBody);
-		console.log("Push payload:", pushPayload);
 
 		const response = await webpush.sendNotification(subscription, pushPayload);
 		console.log("Push enviado:", response);
@@ -36,21 +36,21 @@ export const sendWebPush = async (req, res) => {
 
 
 export const subscribe = async (req, res) => {
+	console.log("Body recibido:", JSON.stringify(req.body, null, 2));
     const { userId, subscription } = req.body;
     
     if (!subscription?.endpoint || !subscription?.keys?.p256dh || !subscription?.keys?.auth)
       return res.status(400).json({ error: 'Error subscription data incompleted' });
+		console.log("SUBSCRIBE:", subscription);
   
 	try {
-		const subscriptionFound = await Subscription.findOne({ "subscription.endpoint": subscription.endpoint });
-		if (!subscriptionFound) {
-			const newSub = await Subscription.create({
-				subscription,
-				user: userId
-			});
+		const subscriptionFound = await Subscription.findOneAndUpdate(
+			{ "subscription.endpoint": subscription.endpoint },
+			{ subscription, user: userId },
+			{ upsert: true, new: true, setDefaultsOnInsert: true }
+		);
 
-			return res.status(201).json(newSub);
-      	}
+		console.log("Subscription guardada/actualizada:", subscriptionFound);
 
 		res.status(200).json(subscriptionFound);
 

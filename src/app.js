@@ -6,6 +6,7 @@ import authRoutes from './routes/auth.routes.js';
 import workoutRoutes from './routes/workout.routes.js';
 import userRoutes from './routes/user.routes.js';
 import webpushRoutes from './routes/webpush.routes.js';
+import './crons/reminder.cron.js';
 
 const app = express();
 const allowedOrigins = ["http://localhost:5173", "https://localhost:4173", "https://santi-mzg.github.io"];

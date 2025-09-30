@@ -21,22 +21,24 @@ cron.schedule('0 9 * * *', async () => {
     });
 
     try {
-      await webpush.sendNotification(subscription, payload);
+      await webpush.sendNotification(subscription.subscription, payload);
       console.log(`Notificación enviada a ${workout.userId}`);
     } catch (err) {
       console.error('Error enviando notificación:', err);
     }
   }
+},{
+  timezone: "America/Argentina/Buenos_Aires"
 });
 
-cron.schedule('0 23 * * *', async () => {
+cron.schedule('46 13 * * *', async () => {
   console.log('Ejecutando recordatorios nocturnos...');
 
   const users = await User.find({});
 
   for (const user of users) {
-    const subscription = await Subscription.findOne({ user: user._id });
-    if (!subscription) continue;
+    const subscriptions = await Subscription.find({ user: user._id });
+    if (!subscriptions) continue;
 
     const payload = JSON.stringify({
       title: '¿Entrenaste hoy? ',
@@ -44,15 +46,19 @@ cron.schedule('0 23 * * *', async () => {
       icon: '/pwa-192x192.png',
     });
 
-    try {
-      await webpush.sendNotification(subscription, payload);
-      console.log(`Notificación enviada a ${user._id}`);
-    } catch (err) {
-      console.error('Error enviando notificación:', err);
+    for (const subscription of subscriptions) {
+      try {
+        await webpush.sendNotification(subscription.subscription, payload);
+        console.log(`Notificación enviada a ${user._id}`);
+
+      } catch (err) {
+        console.error('Error enviando notificación:', err);
+      }
     }
   }
+}, {
+  timezone: "America/Argentina/Buenos_Aires"
 });
-
 
 
 function formatDate(date){
