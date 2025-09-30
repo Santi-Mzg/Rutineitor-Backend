@@ -30,12 +30,6 @@ export const sendWebPush = async (req, res) => {
 		
 	} catch (error) {
 		console.error("Error enviando push:", error.statusCode, error.body);
-
-		if (error.statusCode === 404 || error.statusCode === 410) {
-			await Subscription.deleteOne({ _id: subscriptionData._id });
-			console.log("Suscripción inválida eliminada de la DB");
-		}
-
 		return res.status(500).json({ message: "Failed to send notification" });
 	}
 }
