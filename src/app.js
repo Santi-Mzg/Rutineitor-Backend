@@ -9,14 +9,14 @@ import webpushRoutes from './routes/webpush.routes.js';
 import './crons/reminder.cron.js';
 
 const app = express();
-const allowedOrigins = ["http://localhost:5173", "https://localhost:4173", "https://santi-mzg.github.io"];
+const allowedOrigins = ["http://localhost:5173","http://192.168.0.9:5173", "https://santi-mzg.github.io"];
 
 
 app.use(
     cors({
         origin: (origin, callback) => {
             if (!origin || allowedOrigins.includes(origin)) {
-                callback(null, true); // Permitir el origen
+                callback(null, true);
             } else {
                 callback(new Error("No autorizado por CORS")); // Rechazar otros orígenes
             }
