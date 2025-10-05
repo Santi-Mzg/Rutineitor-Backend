@@ -9,7 +9,14 @@ export const getUser = async (req, res) => {
       return res.status(404).json({ message: "No se encontró el usuario" });
     }
 
-    res.json(userFound);
+    res.json({
+        id: userFound._id,
+        username: userFound.username,
+        email: userFound.email,
+        isTrainer: userFound.isTrainer,
+        createdAt: userFound.createdAt,
+        updatedAt: userFound.updatedAt,
+    });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -17,12 +24,25 @@ export const getUser = async (req, res) => {
 
 export const getUsers = async (req, res) => {
     try {
-      const users = await User.find({})
-      console.log(JSON.stringify(users))
+      const usersData = await User.find({})
+      console.log(JSON.stringify(usersData))
 
-      if (users.length === 0) {
+      if (usersData.length === 0) {
         return res.status(404).json({ message: "No se encontraron usuarios" });
       }
+
+      const users = [];
+      
+      usersData.forEach(user => {
+        users.push({
+            id: user._id,
+            username: user.username,
+            email: user.email,
+            isTrainer: user.isTrainer,
+            createdAt: user.createdAt,
+            updatedAt: user.updatedAt,
+        });
+      });
 
       res.json(users);
     } catch (error) {
