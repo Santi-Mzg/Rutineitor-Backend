@@ -2,8 +2,7 @@ import User from '../models/user.model.js';
 
 export const getUser = async (req, res) => {
   try {
-    const userFound = await User.find({ username: req.params.username })
-    console.log(JSON.stringify(userFound))
+    const userFound = await User.findOne({ username: req.params.username })
 
     if (!userFound) {
       return res.status(404).json({ message: "No se encontró el usuario" });
@@ -25,7 +24,6 @@ export const getUser = async (req, res) => {
 export const getUsers = async (req, res) => {
     try {
       const usersData = await User.find({})
-      console.log(JSON.stringify(usersData))
 
       if (usersData.length === 0) {
         return res.status(404).json({ message: "No se encontraron usuarios" });
