@@ -73,11 +73,11 @@ export const login = async (req, res) => {
             id: userFound._id,
             username: userFound.username,
             email: userFound.email,
-            isTrainer: userFound.isTrainer,
             age: userFound.age,
             weight: userFound.weight,
             height: userFound.height,
             goal: userFound.goal,
+            isTrainer: userFound.isTrainer,
             createdAt: userFound.createdAt,
             updatedAt: userFound.updatedAt,
         });
@@ -115,13 +115,13 @@ export const modify = async (req, res) => {
             id: userSaved._id,
             username: userSaved.username,
             email: userSaved.email,
-            isTrainer: userSaved.isTrainer,
             age: userSaved.age,
             weight: userSaved.weight,
             height: userSaved.height,
             goal: userSaved.goal,
+            isTrainer: userSaved.isTrainer,
             createdAt: userSaved.createdAt,
-            upsdatedAt: userSaved.updatedAt,
+            updatedAt: userSaved.updatedAt,
         });
 
     } catch (error) {
@@ -142,9 +142,16 @@ export const verifyToken = async (req, res) => {
         if (!userFound) return res.status(401).json({ message: "No autorizado" })
 
         return res.json({
-            id: userFound._id,
-            username: userFound.username,
+            id: userSaved._id,
+            username: userSaved.username,
             email: userFound.email,
+            age: userFound.age,
+            weight: userFound.weight,
+            height: userFound.height,
+            goal: userFound.goal,
+            isTrainer: userFound.isTrainer,
+            createdAt: userFound.createdAt,
+            updatedAt: userFound.updatedAt,
         })
     })
 }
