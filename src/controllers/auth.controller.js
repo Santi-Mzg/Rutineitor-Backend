@@ -142,8 +142,8 @@ export const verifyToken = async (req, res) => {
         if (!userFound) return res.status(401).json({ message: "No autorizado" })
 
         return res.json({
-            id: userSaved._id,
-            username: userSaved.username,
+            id: userFound._id,
+            username: userFound.username,
             email: userFound.email,
             age: userFound.age,
             weight: userFound.weight,
